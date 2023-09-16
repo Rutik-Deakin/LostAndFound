@@ -8,6 +8,7 @@ const startApp = async () => {
     try {
         // Waiting for mongoDb connection
         await connectToDatabase(); 
+        app.use(express.json())
         //routes redirection to routes file
         app.use('/', routes);
         const port = process.env.PORT || 5000;
