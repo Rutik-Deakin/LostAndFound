@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In & Sign Up - LostAndFound</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #ADD8E6; /* Light Blue */
+        }
+
+        .navbar {
+            background-color: #87CEEB; /* Sky Blue */
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header with Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">LostAndFound</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <div class="container mt-5">
+        <div class="row">
+            <!-- Sign In Form -->
+            <div class="col-lg-5">
+                <h3>Sign In</h3>
+                    <form id="signinForm">
+                        <div class="mb-3">
+                            <label for="signin-email" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="signin-email" placeholder="Your Email">
+                            <div id="signin-emailError" class="text-danger"></div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="signin-password" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="signin-password"
+                                placeholder="Your Password">
+                            <div id="signin-passwordError" class="text-danger"></div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Sign In</button>
+                    </form>
+            </div>
+
+            <!-- Divider -->
+            <div class="col-lg-2 d-flex align-items-center justify-content-center">
+                <div class="border-end" style="height: 100%;"></div>
+            </div>
+
+            <!-- Sign Up Form -->
+            <div class="col-lg-5">
+                <h3>Sign Up</h3>
+                    <form id="signupForm">
+                        <div class="row mb-3">
+                            <div class="col">
+                                <label for="signup-firstname" class="form-label">First Name</label>
+                                <input type="text" class="form-control" id="signup-firstname" placeholder="First Name">
+                                <div class="text-danger" id="signup-firstnameError"></div>
+                            </div>
+                            <div class="col">
+                                <label for="signup-lastname" class="form-label">Last Name</label>
+                                <input type="text" class="form-control" id="signup-lastname" placeholder="Last Name">
+                                <div class="text-danger" id="signup-lastnameError"></div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="signup-phone" class="form-label">Phone Number</label>
+                            <input type="tel" class="form-control" id="signup-phone" placeholder="04xxxxxxxx">
+                            <div class="text-danger" id="signup-phoneError"></div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="signup-email" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="signup-email" placeholder="Your Email">
+                            <div class="text-danger" id="signup-emailError"></div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="signup-password" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="signup-password"
+                                placeholder="Your Password">
+                            <div class="text-danger" id="signup-passwordError"></div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="signup-confirm-password" class="form-label">Confirm Password</label>
+                            <input type="password" class="form-control" id="signup-confirm-password"
+                                placeholder="Confirm Your Password">
+                            <div class="text-danger" id="signup-confirm-passwordError"></div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Sign Up</button>
+                    </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="../BackEnd/Routers/sign.js"></script>
+</body>
+
+</html>
