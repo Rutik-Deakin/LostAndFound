@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Item List - LostAndFound</title>
+    <title>Contact - LostAndFound</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <style>
@@ -14,19 +14,6 @@
 
         .navbar {
             background-color: #87CEEB; /* Sky Blue */
-        }
-
-        .item-card {
-            border: 1px solid #ddd;
-            margin-bottom: 20px;
-            border-radius: 5px;
-            overflow: hidden;
-        }
-
-        .item-card img {
-            width: 100%;
-            max-height: 250px;
-            object-fit: cover;
         }
     </style>
 </head>
@@ -42,60 +29,57 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item active">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
                         <a class="nav-link" href="index.html">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="about.html">About</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item active">
                         <a class="nav-link" href="contact.html">Contact</a>
                     </li>
                 </ul>
-
-                <div class="d-flex align-items-center">
-                    <span id="welcomeMsg" class="navbar-text me-3">Welcome, user</span>
-                    <button id="signOutBtn" class="btn btn-danger">Sign Out</button>
-                </div>
             </div>
         </div>
     </nav>
 
-    <!-- Search Bar -->
+    <!-- Contact Content Area -->
     <div class="container mt-5">
-        <div class="mb-3">
-            <input type="text" class="form-control" id="search-bar" placeholder="Search for items...">
-        </div>
-    </div>
-
-    <!-- Items Display Area -->
-    <div class="container">
-        <div id="items-area" class="row">
-            <!-- Sample item card-->
-            <div class="col-md-4">
-                <div class="item-card">
-                    <img src="./Images/image1.jpg" alt="Item Image">
-                    <div class="p-3">
-                        <h5>Title from DB</h5>
-                        <small>Date and Time from DB</small>
-                        <p>Description from DB</p>
-                        <p><strong>Location:</strong> Location from DB</p>
+        <h2 class="text-center">Contact LostAndFound</h2>
+        <p class="lead mt-4 text-center">
+            Have questions or concerns? Reach out to us.
+        </p>
+        
+        <div class="row justify-content-center">
+            <div class="col-lg-5">
+                <h3>Send us an enquiry</h3>
+                <form id="enquiryForm">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="name" placeholder="Your Name" required>
+                        <small class="text-danger" id="nameError"></small>
                     </div>
-                </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" placeholder="Your Email" required>
+                        <small class="text-danger" id="emailError"></small>
+                    </div>
+                    <div class="mb-3">
+                        <label for="message" class="form-label">Message</label>
+                        <textarea class="form-control" id="message" rows="5" placeholder="Your Message"
+                            required></textarea>
+                        <small class="text-danger" id="messageError"></small>
+                    </div>
+                    <button type="button" class="btn btn-primary" id="submitEnquiry">Submit</button>
+                </form>
             </div>
-            <!-- End of sample item card -->
         </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-
-    <script src="user.js"></script>
-
-    <!--fetch data from the backend -->
-    
+        <script src="contact.js"></script>
 </body>
 
 </html>
