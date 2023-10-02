@@ -65,7 +65,7 @@ document.getElementById("signinForm").addEventListener("submit", (event) => {
                 document.getElementById("signinForm").reset();
 
                 //Forward to portal.html
-                window.location.href = "/userPrompt.html";
+                window.location.href = "userPrompt.html";
 
                 // Create and display a success message element
                 const successMessage = document.createElement("div");
