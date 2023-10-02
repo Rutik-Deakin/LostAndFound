@@ -8,7 +8,14 @@ const startApp = async () => {
     try {
         // Waiting for mongoDb connection
         await connectToDatabase(); 
-        app.use(express.json())
+        app.use(express.json());
+        app.use((req, res, next) => {
+            res.header('Access-Control-Allow-Origin', '*');
+            res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+            res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+            next();
+          });
+              
         //routes redirection to routes file
         app.use('/', routes);
         const port = process.env.PORT || 5000;
