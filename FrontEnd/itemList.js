@@ -4,7 +4,7 @@ const fetchAllItems = async () => {
     console.log("Test: ", response.data.data);
     items = response.data.data;
 
-function createItemCard(item) {
+createItemCard = (item) => {
     const itemCard = document.createElement('div');
     itemCard.className = 'col-md-4';
     itemCard.innerHTML = `
@@ -21,8 +21,7 @@ function createItemCard(item) {
     return itemCard;
   }
   
-  // Function to append item cards to the 'items-area'
-  function appendItemCardsToPage(items) {
+  appendItemCardsToPage = (items) => {
     const itemsArea = document.getElementById('items-area');
     items.forEach(item => {
       const itemCard = createItemCard(item);
