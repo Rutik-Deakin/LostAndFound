@@ -6,6 +6,8 @@ const {
   updateItemModel,
   deleteItemModel,
 } = require("../Models/itemModel");
+const { addUserModel, getUserModel } = require("../Models/userModel")
+
 
 const getAllSums = async (req, res) => {
   try {
@@ -162,4 +164,6 @@ module.exports = {
   getAllItemsController,
   updateItemController,
   deleteItemController,
+  signUpController,
+  signInController,
 };
