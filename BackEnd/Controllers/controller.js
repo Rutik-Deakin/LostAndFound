@@ -118,6 +118,43 @@ const deleteItemController = async (req, res) => {
   }
 };
 
+const signUpController = async (req, res) => {
+  try {
+      const userInfo = req.body
+      if(!userInfo.firstname
+          || !userInfo.lastname
+          || !userInfo.phone
+          || !userInfo.email
+          || !userInfo.password) {
+          return res.status(400).json({ statusCode: 400, error: 'Inappropriate data provided' });
+      }
+      const response = await addUserModel(userInfo)
+      return res.status(200).json({ success:true, statusCode: 200, message: 'User sign up successfully' });
+  } catch (error) {
+      console.log('Error in addUser controller: ', error);
+      return res.status(500).json({ statusCode: 500, error: 'Internal server error' });
+  }
+}
+
+
+const signInController = async (req, res) => {
+  try {
+      const loginInfo = req.body
+      if(!loginInfo.email
+          || !loginInfo.password) {
+          return res.status(400).json({ statusCode: 400, error: 'Inappropriate data provided' });
+      }
+      const response = await getUserModel(loginInfo.email)
+      if(!response || response.password != loginInfo.password) {
+          return res.status(401).json({ statusCode: 400, error: 'Email or password incorrect' });
+      }
+      return res.status(200).json({ statusCode: 200, message: 'User sign in successfully', success: true });
+  } catch (error) {
+      console.log('Error in addUser controller: ', error);
+      return res.status(500).json({ statusCode: 500, error: 'Internal server error' });
+  }
+}
+
 module.exports = {
   testController,
   getAllSums,
