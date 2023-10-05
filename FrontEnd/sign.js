@@ -46,7 +46,7 @@ document.getElementById("signinForm").addEventListener("submit", (event) => {
   // Check if the form is valid
   if (isValid) {
     // Perform the sign-in HTTP request to the server
-    fetch("/signin", {
+    fetch("http://localhost:3000/signin", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -179,7 +179,7 @@ document.getElementById("signupForm").addEventListener("submit", (event) => {
   // Check if the form is valid
   if (isValid) {
     // Perform the sign-up HTTP request to the server
-    fetch("/signup", {
+    fetch("http://localhost:3000/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
