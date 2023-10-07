@@ -1,6 +1,6 @@
 let items = [];
 
-createItemCard = (item) => {
+const createItemCard = (item) => {
   const itemCard = document.createElement("div");
   itemCard.className = "col-md-4";
   itemCard.innerHTML = `
@@ -17,7 +17,7 @@ createItemCard = (item) => {
   return itemCard;
 };
 
-appendItemCardsToPage = (items) => {
+const appendItemCardsToPage = (items) => {
   const itemsArea = document.getElementById("items-area");
   items.forEach((item) => {
     const itemCard = createItemCard(item);
@@ -25,7 +25,7 @@ appendItemCardsToPage = (items) => {
   });
 };
 
-removeAllItems = () => {
+const removeAllItems = () => {
   const itemsArea = document.getElementById("items-area");
   while (itemsArea.firstChild) {
     itemsArea.removeChild(itemsArea.firstChild);
