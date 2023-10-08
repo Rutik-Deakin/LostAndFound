@@ -6,8 +6,7 @@ const {
   updateItemModel,
   deleteItemModel,
 } = require("../Models/itemModel");
-const { addUserModel, getUserModel } = require("../Models/userModel")
-
+const { addUserModel, getUserModel } = require("../Models/userModel");
 
 const getAllSums = async (req, res) => {
   try {
@@ -41,13 +40,17 @@ const testController = async (req, res) => {
 const addItemController = async (req, res) => {
   try {
     const item = req.body.item || {};
-    //Check for proper data
-    if (!item.title || !item.description) {
-      return res
-        .status(400)
-        .json({ statusCode: 400, message: "Inappropriate data provided" });
+
+    const image = req.file;
+    const imagePath = image.path.replace(/\\/g, "/");
+    if (image && image.path) {
+      // Check if image and image.path are defined
+      item.imagePath = image.path;
     }
-    const response = await addItemModel(item);
+
+    console.log("test");
+    const itemObj = JSON.parse(item);
+    const response = await addItemModel({ ...itemObj, image: imagePath });
     return res.status(201).json({
       statusCode: 201,
       message: "Item added successfully",
@@ -135,13 +138,11 @@ const signUpController = async (req, res) => {
         .json({ statusCode: 400, error: "Inappropriate data provided" });
     }
     const response = await addUserModel(userInfo);
-    return res
-      .status(200)
-      .json({
-        success: true,
-        statusCode: 200,
-        message: "User sign up successfully",
-      });
+    return res.status(200).json({
+      success: true,
+      statusCode: 200,
+      message: "User sign up successfully",
+    });
   } catch (error) {
     console.log("Error in addUser controller: ", error);
     return res
@@ -164,14 +165,12 @@ const signInController = async (req, res) => {
         .status(401)
         .json({ statusCode: 400, error: "Email or password incorrect" });
     }
-    return res
-      .status(200)
-      .json({
-        statusCode: 200,
-        message: "User sign in successfully",
-        success: true,
-        data: response
-      });
+    return res.status(200).json({
+      statusCode: 200,
+      message: "User sign in successfully",
+      success: true,
+      data: response,
+    });
   } catch (error) {
     console.log("Error in addUser controller: ", error);
     return res

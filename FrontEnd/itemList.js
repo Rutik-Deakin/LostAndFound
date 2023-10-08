@@ -2,11 +2,12 @@ let items = [];
 let user = {};
 
 const getLoggedInUserInfo = () => {
-  const data = localStorage.getItem('user');
-  user = JSON.parse(data || '{}');
+  const data = localStorage.getItem("user");
+  user = JSON.parse(data || "{}");
   console.log("User: ", user, user.firstName || " " + user.lastName || " ");
-  document.getElementById('userName').innerHTML = (user.firstname || " ")+ " " + (user.lastname || " ")
-}
+  document.getElementById("userName").innerHTML =
+    (user.firstname || " ") + " " + (user.lastname || " ");
+};
 
 const createItemCard = (item) => {
   const itemCard = document.createElement("div");
@@ -43,6 +44,7 @@ const removeAllItems = () => {
 const fetchAllItems = async () => {
   const response = await axios.get("http://localhost:3000/items");
   items = response.data.data;
+  console.log("Items: ", items);
   appendItemCardsToPage(items);
 };
 
@@ -51,13 +53,13 @@ const searchItem = () => {
   const dataLower = searchTerm.toLowerCase().trim();
   const filteredItems = items.filter((item) => {
     const lowerCaseValues = Object.values(item).map((value) => {
-      return typeof value === 'string' ? value.toLocaleLowerCase() : value;
+      return typeof value === "string" ? value.toLocaleLowerCase() : value;
     });
     return lowerCaseValues.some((value) => {
-      if (typeof value === 'string') {
+      if (typeof value === "string") {
         return value.includes(dataLower);
       }
-      return false; 
+      return false;
     });
   });
   removeAllItems();
