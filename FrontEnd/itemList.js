@@ -26,7 +26,6 @@ const createItemCard = (item) => {
 };
 
 const redirectToViewItem = (item) => {
-  console.log("Stored item: ", item);
   localStorage.setItem("item", item);
   window.location.href = "viewItem.html";
 };
@@ -37,6 +36,13 @@ const appendItemCardsToPage = (items) => {
     const itemCard = createItemCard(item);
     itemsArea.appendChild(itemCard);
   });
+const imgElements = document.querySelectorAll("img");
+imgElements.forEach((img) => {
+  img.addEventListener("error", () => {
+    img.src = "../FrontEnd/images/default.png"; 
+  });
+});
+
 };
 
 const removeAllItems = () => {

@@ -23,6 +23,10 @@ document.addEventListener("DOMContentLoaded", async () => {
                     document.getElementById("personEmail").innerHTML = `<b>Email: </b>${user.email} <small>(Click for quick contact)</small>`;
                     document.getElementById("personEmail").setAttribute('href', `mailto:${user.email}`)
                 }
+                const img = document.querySelector('img')
+                img.addEventListener("error", () => {
+                    img.src = "../FrontEnd/images/default.png"; 
+                  });
             } catch (error) {
                 console.error("Error fetching item:", error);
             }
