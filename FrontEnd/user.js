@@ -1,12 +1,12 @@
-document.addEventListener("DOMContentLoaded", async () => {
+document.addEventListener("DOMContentLoaded", () => {
   // Fetch user info from MongoDB
-  const userInfo = localStorage.getItem('user');
+  const userInfo = JSON.parse(localStorage.getItem('user'));
 
   // Update welcome message
   if (userInfo && (userInfo.firstname || userInfo.lastname)) {
     document.getElementById(
       "userName"
-    ).textContent = userInfo.firstName || " " + userInfo.lastName || " ";
+    ).innerHTML = (userInfo.firstname || " ") + " " + (userInfo.lastname || " ");
   }
 
   // Get the Sign Out button by its ID
@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   // Attach sign out button event
   if (signOutBtn) {
     signOutBtn.addEventListener("click", async () => {
-      await signOutUser();
+      signOutUser();
     });
   }
 });
@@ -31,7 +31,7 @@ async function signOutUser() {
 }
 
 const eligibilityCheck = () => {
-  if(!localStorage.getItem('user')) {
+  if (!localStorage.getItem('user')) {
     window.location.href = "sign.html";
   }
 }
