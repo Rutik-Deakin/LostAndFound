@@ -1,6 +1,4 @@
 const {
-  testModel,
-  getAllSumModel,
   addItemModel,
   getItemsModel,
   updateItemModel,
@@ -8,36 +6,6 @@ const {
   getItemByIdModel
 } = require("../Models/itemModel");
 const { addUserModel, getUserModel } = require("../Models/userModel");
-
-const getAllSums = async (req, res) => {
-  try {
-    const data = await getAllSumModel();
-    res.status(200).json({ data, message: "fetched all data" });
-  } catch (error) {
-    console.log("Error is getAllSums: ", error);
-  }
-};
-
-const testController = async (req, res) => {
-  try {
-    console.log("controller works!");
-    const obj = {
-      num1: parseInt(req.query.num1),
-      num2: parseInt(req.query.num2),
-      sum: parseInt(req.query.num1) + parseInt(req.query.num2),
-    };
-    const response = await testModel(obj);
-    res.status(201).json({
-      statusCode: 201,
-      message: "Numbers and their sum saved successfully",
-      data: response.insertedId,
-    });
-  } catch (error) {
-    console.log("Error in testController: ", error);
-    res.status(500).json({ statusCode: 500, message: "Internal server error" });
-  }
-};
-
 const addItemController = async (req, res) => {
   try {
     const item = req.body.item || {};
@@ -86,7 +54,6 @@ const getItemByIdController = async (req, res) => {
     const id = req.params.id || "";
     const itemObj = await getItemByIdModel(id);
     const data = itemObj[0];
-    console.log({id, data});
     return res.status(200).json({
       statusCode: 201,
       data,
@@ -200,8 +167,6 @@ const signInController = async (req, res) => {
 };
 
 module.exports = {
-  testController,
-  getAllSums,
   addItemController,
   getAllItemsController,
   getItemByIdController,

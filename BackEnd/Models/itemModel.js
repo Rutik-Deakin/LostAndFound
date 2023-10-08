@@ -26,8 +26,8 @@ const getItemByIdModel = (id) => {
         {
             '$lookup': {
                 'from': 'Users',
-                'localField': 'userId', // Match the 'userId' in the 'Items' collection
-                'foreignField': '_id', // Match the '_id' in the 'Users' collection
+                'localField': 'userId',
+                'foreignField': '_id', 
                 'as': 'user'
             }
         },
@@ -75,6 +75,7 @@ module.exports = {
   getAllSumModel,
   addItemModel,
   getItemsModel,
+  getItemByIdModel,
   updateItemModel,
   deleteItemModel,
 };

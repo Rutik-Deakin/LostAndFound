@@ -4,14 +4,13 @@ const multer = require("multer");
 const fs = require("fs");
 const path = require("path");
 const {
-  testController,
-  getAllSums,
   addItemController,
   getAllItemsController,
   updateItemController,
   deleteItemController,
   signInController,
   signUpController,
+  getItemByIdController
 } = require("../Controllers/controller");
 
 const router = express.Router();
@@ -34,16 +33,19 @@ const storage = multer.diskStorage({
 });
 
 const upload = multer({ storage: storage });
-
-router.get("/", getAllSums);
-router.get("/add", testController);
-
 // POST call for adding item to collection with file upload
 router.post("/add-item", upload.single("itemImage"), addItemController);
 
 router.post("/signup", signUpController);
 router.post("/signin", signInController);
+
+//GET call to fetch all items
 router.get("/items", getAllItemsController);
+
+//GET call to fetch single item by id
+router.get("/items/:id", getItemByIdController);
+
+//DELETE call to delete item by id
 router.delete("/delete-item/:id", deleteItemController);
 
 module.exports = router;
