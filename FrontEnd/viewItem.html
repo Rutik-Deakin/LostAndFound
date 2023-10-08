@@ -1,26 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Item - LostAndFound</title>
+    <title>View Item - LostAndFound</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <style>
         body {
+
             background-color: #A1A1B9;
         }
 
         .navbar {
             background-color: #525279;
         }
+
+        #personEmail {
+            color: #262626;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        #personEmail:hover {
+            color: rgb(50, 63, 255);
+        }
     </style>
 </head>
 
 <body>
 
-    <!-- Header with Navbar -->
+    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
             <a class="navbar-brand" href="#">LostAndFound</a>
@@ -43,56 +54,51 @@
                     </li>
                 </ul>
                 <div class="d-flex align-items-center">
-                    <span id="welcomeMsg" class="navbar-text me-3">Welcome, </span>
-                    <span id="userName" class="mx-2">Guest</span>
+                    <span id="userName" class="mx-2"></span>
                     <button id="signOutBtn" class="btn btn-danger">Sign Out</button>
                 </div>
             </div>
         </div>
     </nav>
 
-
-    <!-- Add Item Form -->
+    <!-- Content Container -->
     <div class="container mt-5">
-        <h2 class="text-center">Add Found Item</h2>
-        <form action="/path_to_server" method="POST" enctype="multipart/form-data" class="mt-4">
-            <div class="mb-3">
-                <label for="itemName" class="form-label">Name of Item</label>
-                <input type="text" class="form-control" id="itemName" name="itemName" required>
+        <div id="itemDetails" class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="card">
+                    <img src="" class="card-img-top img-fluid" alt="Item Image" id="itemImage">
+                    <div class="card-body">
+                        <h5 class="card-title" id="itemTitle"></h5>
+                        <p class="card-text" id="itemDescription"></p>
+                        <p class="card-text" id="itemLocation"></p>
+                        <p class="card-text" id="itemDate"></p>
+                    </div>
+                </div>
             </div>
-
-            <div class="mb-3">
-                <label for="itemDate" class="form-label">When did you find the Item?</label>
-                <input type="datetime-local" class="form-control" id="itemDate" name="itemDate" required>
+        </div>
+        <div class="row mt-3 justify-content-center">
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Contact Information</h5>
+                        <p class="card-text" id="personName"></p>
+                        <p class="card-text" >
+                            <a id="personEmail" href="mailto:"></a>
+                        </p>
+                    </div>
+                </div>
             </div>
-
-            <div class="mb-3">
-                <label for="itemDescription" class="form-label">Description</label>
-                <textarea class="form-control" id="itemDescription" rows="4" name="itemDescription" required></textarea>
-            </div>
-
-            <div class="mb-3">
-                <label for="itemImage" class="form-label">Upload Image</label>
-                <input type="file" class="form-control" id="itemImage" name="itemImage" accept="image/*" required>
-            </div>
-
-            <div class="mb-3">
-                <label for="itemLocation" class="form-label">Where did you find the Item?</label>
-                <input type="text" class="form-control" id="itemLocation" name="itemLocation" required>
-            </div>
-
-            <button style=background-color:#525279 type="submit" class="btn btn-primary">Post Item</button>
-        </form>
+        </div>
     </div>
 
+    <!-- Bootstrap Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
 
+    <!-- Your JavaScript -->
+    <script src="viewItem.js"></script>
     <script src="user.js"></script>
-    <script src="addItem.js"></script>
-
-
 </body>
 
 </html>

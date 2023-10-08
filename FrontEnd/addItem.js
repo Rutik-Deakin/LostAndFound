@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   const form = document.querySelector("form");
+  const loggedInUser = JSON.parse(localStorage.getItem('user'));
 
   form.addEventListener("submit", async function (event) {
     event.preventDefault();
@@ -10,6 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
       description: formData.get("itemDescription"),
       date: formData.get("itemDate"),
       location: formData.get("itemLocation"),
+      userId: loggedInUser._id
     };
 
     try {

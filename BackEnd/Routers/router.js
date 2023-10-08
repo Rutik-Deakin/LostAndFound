@@ -1,5 +1,5 @@
 const express = require('express');
-const { testController, getAllSums, addItemController, getAllItemsController, updateItemController, deleteItemController, signInController, signUpController } = require('../Controllers/controller');
+const { testController, getAllSums, addItemController, getAllItemsController, getItemByIdController, updateItemController, deleteItemController, signInController, signUpController } = require('../Controllers/controller');
 const router = express.Router();
 
 
@@ -15,6 +15,9 @@ router.post("/signin", signInController);
 
 //GET call to get all items from collection
 router.get('/items', getAllItemsController);
+
+//GET call to get all items from collection
+router.get('/items/:id', getItemByIdController);
 
 //We can also use patch method to update document
 router.post('/add-item/:id', updateItemController);

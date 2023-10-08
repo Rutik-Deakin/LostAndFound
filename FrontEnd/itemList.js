@@ -12,7 +12,7 @@ const createItemCard = (item) => {
   const itemCard = document.createElement("div");
   itemCard.className = "col-md-4";
   itemCard.innerHTML = `
-    <div class="item-card">
+    <div class="item-card" onclick="redirectToViewItem('${item._id}')">
       <img src="${item?.image}" alt="Item Image">
       <div class="p-3">
         <h5>${item.title}</h5>
@@ -23,6 +23,12 @@ const createItemCard = (item) => {
     </div>
   `;
   return itemCard;
+};
+
+const redirectToViewItem = (item) => {
+  console.log("Stored item: ", item);
+  localStorage.setItem("item", item);
+  window.location.href = "viewItem.html";
 };
 
 const appendItemCardsToPage = (items) => {

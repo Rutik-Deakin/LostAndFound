@@ -5,6 +5,7 @@ const {
   getItemsModel,
   updateItemModel,
   deleteItemModel,
+  getItemByIdModel
 } = require("../Models/itemModel");
 const { addUserModel, getUserModel } = require("../Models/userModel")
 
@@ -76,6 +77,25 @@ const getAllItemsController = async (req, res) => {
       .json({ statusCode: 500, message: "Internal server error" });
   }
 };
+
+const getItemByIdController = async (req, res) => {
+  try {
+    const id = req.params.id || "";
+    const itemObj = await getItemByIdModel(id);
+    const data = itemObj[0];
+    console.log({id, data});
+    return res.status(200).json({
+      statusCode: 201,
+      data,
+      message: "fetched item successfully",
+    });
+  } catch (error) {
+    console.log("Error in getItemByIdController controller: ", error);
+    return res
+      .status(500)
+      .json({ statusCode: 500, message: "Internal server error" });
+  }
+}
 
 const updateItemController = async (req, res) => {
   try {
@@ -185,6 +205,7 @@ module.exports = {
   getAllSums,
   addItemController,
   getAllItemsController,
+  getItemByIdController,
   updateItemController,
   deleteItemController,
   signUpController,

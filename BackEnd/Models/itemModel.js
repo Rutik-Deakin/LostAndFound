@@ -15,6 +15,31 @@ const addItemModel = (item) => {
     return collection.insertOne(item)
 }
 
+const getItemByIdModel = (id) => {
+    return collection.aggregate([
+        {
+            '$match': {
+                '_id': new ObjectId(id)
+            }
+        },
+        {
+            '$lookup': {
+                'from': 'Users',
+                'localField': 'userId', // Match the 'userId' in the 'Items' collection
+                'foreignField': '_id', // Match the '_id' in the 'Users' collection
+                'as': 'user'
+            }
+        },
+        {
+            '$unwind': {
+                'path': '$user',
+                'preserveNullAndEmptyArrays': true
+            }
+        }
+    ]).toArray();
+    
+}
+
 const getItemsModel = () => {
     //aggregation pipeline to add user's info in item document  
     return collection.aggregate([
@@ -41,4 +66,4 @@ const updateItemModel = (id, item) => {
 const deleteItemModel = (id) => {
     return collection.deleteOne({ _id: new ObjectId(id) });
 }
-module.exports = { testModel, getAllSumModel, addItemModel, getItemsModel, updateItemModel, deleteItemModel }
+module.exports = { testModel, getAllSumModel, addItemModel, getItemsModel, getItemByIdModel, updateItemModel, deleteItemModel }
