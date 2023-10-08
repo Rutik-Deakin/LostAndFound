@@ -59,7 +59,7 @@ document.getElementById("signinForm").addEventListener("submit", (event) => {
       .then((response) => response.json())
       .then((data) => {
         if (data.success) {
-          localStorage.setItem('user', JSON.stringify(data.data));
+          localStorage.setItem("user", JSON.stringify(data.data));
 
           // Sign-in successful
           console.log("Sign in successful!");
@@ -225,9 +225,12 @@ document.getElementById("signupForm").addEventListener("submit", (event) => {
 });
 
 const loggedInCheck = () => {
-  if (localStorage.getItem('user')) {
+  const location = window.location.href;
+  if (location.split("/").pop() === "index.html") {
+    return;
+  } else if (localStorage.getItem("user")) {
     window.location.href = "index.html";
   }
-}
+};
 
 loggedInCheck();
