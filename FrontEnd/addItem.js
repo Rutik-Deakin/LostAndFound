@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   const form = document.querySelector("form");
+  const loggedInUser = JSON.parse(localStorage.getItem('user'));
 
   form.addEventListener("submit", async function (event) {
     event.preventDefault();
@@ -14,6 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
       description: form.itemDescription.value,
       date: form.itemDate.value,
       location: form.itemLocation.value,
+
     };
 
     // Append the JSON object to FormData

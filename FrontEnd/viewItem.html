@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Item - LostAndFound</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <style>
+        body {
+
+            background-color: #A1A1B9;
+        }
+
+        .navbar {
+            background-color: #525279;
+        }
+
+        #personEmail {
+            color: #262626;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        #personEmail:hover {
+            color: rgb(50, 63, 255);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">LostAndFound</a>
+            <button style=background-color:#A1A1B9 class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button style=background-color:#A1A1B9>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+
+                    <li class="nav-item active">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <span id="userName" class="mx-2"></span>
+                    <button id="signOutBtn" class="btn btn-danger">Sign Out</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Content Container -->
+    <div class="container mt-5">
+        <div id="itemDetails" class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="card">
+                    <img src="" class="card-img-top img-fluid" alt="Item Image" id="itemImage">
+                    <div class="card-body">
+                        <h5 class="card-title" id="itemTitle"></h5>
+                        <p class="card-text" id="itemDescription"></p>
+                        <p class="card-text" id="itemLocation"></p>
+                        <p class="card-text" id="itemDate"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-3 justify-content-center">
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Contact Information</h5>
+                        <p class="card-text" id="personName"></p>
+                        <p class="card-text" >
+                            <a id="personEmail" href="mailto:"></a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+
+    <!-- Your JavaScript -->
+    <script src="viewItem.js"></script>
+    <script src="user.js"></script>
+</body>
+
+</html>

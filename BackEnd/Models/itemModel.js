@@ -16,6 +16,31 @@ const addItemModel = (item) => {
   return collection.insertOne(item);
 };
 
+const getItemByIdModel = (id) => {
+    return collection.aggregate([
+        {
+            '$match': {
+                '_id': new ObjectId(id)
+            }
+        },
+        {
+            '$lookup': {
+                'from': 'Users',
+                'localField': 'userId', // Match the 'userId' in the 'Items' collection
+                'foreignField': '_id', // Match the '_id' in the 'Users' collection
+                'as': 'user'
+            }
+        },
+        {
+            '$unwind': {
+                'path': '$user',
+                'preserveNullAndEmptyArrays': true
+            }
+        }
+    ]).toArray();
+    
+}
+
 const getItemsModel = () => {
   //aggregation pipeline to add user's info in item document
   return collection
@@ -53,3 +78,4 @@ module.exports = {
   updateItemModel,
   deleteItemModel,
 };
+
