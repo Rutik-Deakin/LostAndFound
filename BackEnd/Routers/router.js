@@ -1,28 +1,50 @@
-const express = require('express');
-const { testController, getAllSums, addItemController, getAllItemsController, getItemByIdController, updateItemController, deleteItemController, signInController, signUpController } = require('../Controllers/controller');
+
+const express = require("express");
+const multer = require("multer");
+const fs = require("fs");
+const path = require("path");
+const {
+  testController,
+  getAllSums,
+  addItemController,
+  getAllItemsController,
+  updateItemController,
+  deleteItemController,
+  signInController,
+  signUpController,
+} = require("../Controllers/controller");
+
 const router = express.Router();
 
+// Create the directory if not exists
+const dir = path.join(__dirname, "../FrontEnd/images/uploadedImage");
+if (!fs.existsSync(dir)) {
+  fs.mkdirSync(dir, { recursive: true });
+}
 
-router.get('/', getAllSums);
+// Create storage engine
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "../FrontEnd/images/uploadedImage/");
+  },
+  filename: function (req, file, cb) {
+    const fileaName = Date.now() + "-" + file.originalname;
+    cb(null, fileaName);
+  },
+});
 
-router.get('/add', testController);
+const upload = multer({ storage: storage });
 
-//POST call for add item to collection
-router.post('/add-item', addItemController);
+router.get("/", getAllSums);
+router.get("/add", testController);
+
+// POST call for adding item to collection with file upload
+router.post("/add-item", upload.single("itemImage"), addItemController);
 
 router.post("/signup", signUpController);
 router.post("/signin", signInController);
-
-//GET call to get all items from collection
-router.get('/items', getAllItemsController);
-
-//GET call to get all items from collection
-router.get('/items/:id', getItemByIdController);
-
-//We can also use patch method to update document
-router.post('/add-item/:id', updateItemController);
-
-//DELETE call to delete item from collection
-router.delete('/delete-item/:id', deleteItemController);
+router.get("/items", getAllItemsController);
+router.delete("/delete-item/:id", deleteItemController);
 
 module.exports = router;
+
