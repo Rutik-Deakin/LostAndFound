@@ -1,4 +1,12 @@
 let items = [];
+let user = {};
+
+const getLoggedInUserInfo = () => {
+  const data = localStorage.getItem('user');
+  user = JSON.parse(data || '{}');
+  console.log("User: ", user, user.firstName || " " + user.lastName || " ");
+  document.getElementById('userName').innerHTML = (user.firstname || " ")+ " " + (user.lastname || " ")
+}
 
 const createItemCard = (item) => {
   const itemCard = document.createElement("div");
@@ -57,5 +65,7 @@ const searchItem = () => {
     appendItemCardsToPage(filteredItems);
   }
 };
+
+getLoggedInUserInfo();
 
 fetchAllItems();

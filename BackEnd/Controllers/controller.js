@@ -170,6 +170,7 @@ const signInController = async (req, res) => {
         statusCode: 200,
         message: "User sign in successfully",
         success: true,
+        data: response
       });
   } catch (error) {
     console.log("Error in addUser controller: ", error);
