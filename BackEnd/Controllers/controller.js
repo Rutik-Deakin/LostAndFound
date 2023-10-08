@@ -6,6 +6,8 @@ const {
   getItemByIdModel
 } = require("../Models/itemModel");
 const { addUserModel, getUserModel } = require("../Models/userModel");
+const { ObjectId } = require("mongodb");
+
 const addItemController = async (req, res) => {
   try {
     const item = req.body.item || {};
@@ -17,9 +19,9 @@ const addItemController = async (req, res) => {
       item.imagePath = image.path;
     }
 
-    console.log("test");
     const itemObj = JSON.parse(item);
-    const response = await addItemModel({ ...itemObj, image: imagePath });
+    const userId = itemObj.userId;
+    const response = await addItemModel({ ...itemObj, userId: new ObjectId(userId), image: imagePath });
     return res.status(201).json({
       statusCode: 201,
       message: "Item added successfully",

@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
       description: form.itemDescription.value,
       date: form.itemDate.value,
       location: form.itemLocation.value,
-
+      userId: loggedInUser._id
     };
 
     // Append the JSON object to FormData
