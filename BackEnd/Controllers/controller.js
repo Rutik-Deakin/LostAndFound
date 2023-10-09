@@ -57,7 +57,7 @@ const getItemByIdController = async (req, res) => {
     const itemObj = await getItemByIdModel(id);
     const data = itemObj[0];
     return res.status(200).json({
-      statusCode: 201,
+      statusCode: 200,
       data,
       message: "fetched item successfully",
     });
