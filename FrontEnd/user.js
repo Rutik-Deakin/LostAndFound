@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("userName").innerHTML =
       (userInfo.firstname || " ") + " " + (userInfo.lastname || " ");
     createSignOutButton();
+    createNotificationButton();
   }
 });
 
@@ -45,3 +46,17 @@ const createSignOutButton = () => {
   // Append the button to the user section in the navbar
   document.getElementById("userSection").appendChild(signOutBtn);
 };
+
+const createNotificationButton = () => {
+  const notificationBtn = document.createElement("button");
+  notificationBtn.id = "notificationBtn";
+  notificationBtn.className = "btn btn-primary mx-2"; // You can adjust the class as needed
+  notificationBtn.innerHTML = "Notifications"; // Change the button text as needed
+  notificationBtn.addEventListener("click", () => {
+    window.location.href="notifications.html"
+  });
+
+  // Append the button to the user section in the navbar
+  document.getElementById("userSection").appendChild(notificationBtn);
+};
+

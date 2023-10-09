@@ -12,6 +12,7 @@ const {
   signUpController,
   getItemByIdController
 } = require("../Controllers/controller");
+const { createNotificationController, getNotificationsByIdController } = require("../Controllers/notificationController");
 
 const router = express.Router();
 
@@ -47,6 +48,12 @@ router.get("/items/:id", getItemByIdController);
 
 //DELETE call to delete item by id
 router.delete("/delete-item/:id", deleteItemController);
+
+//POST call to create notification
+router.post("/add-notification", createNotificationController)
+
+//GET call to fetch notifications
+router.get("/notifications/:id", getNotificationsByIdController)
 
 module.exports = router;
 

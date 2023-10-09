@@ -1,10 +1,12 @@
+const loggedInUser = JSON.parse(localStorage.getItem('user') || {});
+const selectedItemId = localStorage.getItem('item') || "";
+let item = {};
+
 // Wait for the DOM to load
 document.addEventListener("DOMContentLoaded", async () => {
-    let item = {};
 
     // Function to get the selected item from localStorage
     const getSelectedItem = async () => {
-        const selectedItemId = localStorage.getItem('item') || "";
 
         if (selectedItemId.length) {
             try {
@@ -33,4 +35,22 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     };
     getSelectedItem();
+
 });
+
+const createNotification = async () => {
+    try {
+        const notificationObj = {
+            fromUser: loggedInUser._id,
+            toUser: item.user._id,
+            item: selectedItemId,
+            time: new Date(),
+            isRead: false
+        }
+        const response = await axios.post('http://localhost:3000/add-notification', {notificationObj});
+        console.log("response: ", {response, notificationObj});
+    } catch (error) {
+        console.error('Error while creating notification: ', error);
+    }
+}
+
