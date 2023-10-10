@@ -109,7 +109,7 @@ const updateItemController = async (req, res) => {
       .json({ statusCode: 500, message: "Internal server error" });
   }
 };
-
+// Delete item
 const deleteItemController = async (req, res) => {
   try {
     const itemId = req.params.id || "";
