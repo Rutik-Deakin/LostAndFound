@@ -12,7 +12,6 @@ const getAllSumModel = () => {
 };
 
 const addItemModel = (item) => {
-  console.log("item::::::::::::::::: ", typeof item);
   return collection.insertOne(item);
 };
 
@@ -39,6 +38,10 @@ const getItemByIdModel = (id) => {
         }
     ]).toArray();
     
+}
+
+const getItemByUserModel = (id) => {
+  return collection.find({userId: new ObjectId(id)}).toArray();
 }
 
 const getItemsModel = () => {
@@ -78,5 +81,6 @@ module.exports = {
   getItemByIdModel,
   updateItemModel,
   deleteItemModel,
+  getItemByUserModel
 };
 

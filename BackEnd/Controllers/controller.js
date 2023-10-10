@@ -3,7 +3,8 @@ const {
   getItemsModel,
   updateItemModel,
   deleteItemModel,
-  getItemByIdModel
+  getItemByIdModel,
+  getItemByUserModel
 } = require("../Models/itemModel");
 const { addUserModel, getUserModel } = require("../Models/userModel");
 const { ObjectId } = require("mongodb");
@@ -63,6 +64,24 @@ const getItemByIdController = async (req, res) => {
     });
   } catch (error) {
     console.log("Error in getItemByIdController controller: ", error);
+    return res
+      .status(500)
+      .json({ statusCode: 500, message: "Internal server error" });
+  }
+}
+
+const getItemByUserController = async (req, res) => {
+  try {
+    const id = req.params.id || "";
+    const itemObj = await getItemByUserModel(id);
+    const data = itemObj;
+    return res.status(200).json({
+      statusCode: 200,
+      data,
+      message: "fetched items successfully",
+    });
+  } catch (error) {
+    console.log("Error in getItemByUser controller: ", error);
     return res
       .status(500)
       .json({ statusCode: 500, message: "Internal server error" });
@@ -176,4 +195,5 @@ module.exports = {
   deleteItemController,
   signUpController,
   signInController,
+  getItemByUserController
 };

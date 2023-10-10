@@ -10,7 +10,8 @@ const {
   deleteItemController,
   signInController,
   signUpController,
-  getItemByIdController
+  getItemByIdController,
+  getItemByUserController
 } = require("../Controllers/controller");
 const { createNotificationController, getNotificationsByIdController } = require("../Controllers/notificationController");
 
@@ -45,6 +46,9 @@ router.get("/items", getAllItemsController);
 
 //GET call to fetch single item by id
 router.get("/items/:id", getItemByIdController);
+
+//GET call to fetch all item posted by particular user
+router.get("/my-items/:id", getItemByUserController);
 
 //DELETE call to delete item by id
 router.delete("/delete-item/:id", deleteItemController);
